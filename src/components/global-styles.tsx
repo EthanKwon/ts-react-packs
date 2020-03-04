@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body{
-        font-family : -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Play', sans-serif;
         background-color: #525252;
     }
 
@@ -20,6 +20,14 @@ const GlobalStyles = createGlobalStyle`
 
     #root {
         height: 100%;
+    }
+
+    input {
+        border : none;
+    }
+
+    a {
+        text-decoration : none;
     }
 `;
 

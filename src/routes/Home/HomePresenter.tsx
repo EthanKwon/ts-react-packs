@@ -32,7 +32,7 @@ const HomePresenter = () => {
     <Container>
       <Title>Hello world</Title>
       <Packs>
-        <Pack name="Todo List" />
+        <Pack name="Todo List" packLink="./todolist" />
         <Pack name="Counter" />
         <Pack name="Hooks" />
       </Packs>
