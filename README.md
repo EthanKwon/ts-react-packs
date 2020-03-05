@@ -5,7 +5,7 @@ Typescript & React를 연습하기 위한 기본 예제들(pack)을 정리하는
 ### 해야할 것들
 
 - [ ] 프로젝트 메인 페이지 구성
-- [ ] React router를 이용하여 프로젝트 별 화면 나누기
+- [x] React router를 이용하여 프로젝트 별 화면 나누기
 
 ### 만들 예제들(packs)
 
@@ -17,3 +17,8 @@ Typescript & React를 연습하기 위한 기본 예제들(pack)을 정리하는
 - styled-components | @types/styled-components
 - uuid | @types/uuid
 -
+
+### Todo List
+
+- [ ] useReducer 사용하지 않기
+- [ ] presentation 컴포넌트와 Container 컴포넌트 사이 함수 넘기기

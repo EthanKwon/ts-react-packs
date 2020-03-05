@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../../theme";
-
 import { TodoPresProps } from "./TodoInterface";
 
 const Container = styled.div`
@@ -42,21 +41,24 @@ const InputTodo = styled.input`
 const TodoLists = styled.div`
   width: 60%;
   height: 50%;
-
   border: 10px solid ${props => props.theme.subColor};
 `;
 
-const TodoListPresenter = ({ inputChangeFC, inputValue }: TodoPresProps) => {
+const TodoListPresenter = ({
+  onSubmit,
+  onChange,
+  inputValue
+}: TodoPresProps) => {
   return (
     <ThemeProvider theme={theme}>
       <Container>
         <Title>TodoList</Title>
-        <InputForm>
+        <InputForm onSubmit={onSubmit}>
           <InputTodo
             type="text"
             value={inputValue}
             placeholder="Write to do!"
-            onChange={inputChangeFC}
+            onChange={onChange}
           />
         </InputForm>
         <TodoLists />

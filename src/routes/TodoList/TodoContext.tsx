@@ -1,5 +1,4 @@
-import React, { createContext, useReducer, useState } from "react";
-import reducer from "./TodoReducer";
+import React, { createContext, useState, useContext } from "react";
 import { ContextProps, TodoProvProps } from "./TodoInterface";
 
 const initialState = {
@@ -10,14 +9,19 @@ const initialState = {
 const TodoContext = createContext({} as ContextProps);
 
 const TodoProvider = ({ children }: TodoProvProps) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [newTodo, setNewTodo] = useState("");
+
   return (
-    <TodoContext.Provider value={{ state, dispatch }}>
+    <TodoContext.Provider value={{ newTodo, setNewTodo }}>
       {children}
     </TodoContext.Provider>
   );
 };
 
-export const { Consumer: TodoConsumer } = TodoContext;
+//newTodo를 context의 state로 사용
+export const useNewTodo = () => {
+  const { newTodo, setNewTodo } = useContext(TodoContext);
+  return { newTodo, setNewTodo };
+};
 
 export default TodoProvider;

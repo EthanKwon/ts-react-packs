@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import TodoListPresenter from "./TodoListPresenter";
-import TodoProvider from "./TodoContext";
+import TodoProvider, { useNewTodo } from "./TodoContext";
 
 export default () => {
-  const [newTodo, setNewTodo] = useState("");
-  const SubmitInput = () => {};
+  const { newTodo, setNewTodo } = useNewTodo();
+  const submitInput = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    setNewTodo("");
+  };
   const changeInput = (e: React.FormEvent<HTMLInputElement>): void => {
     const {
       target: { value }
@@ -15,7 +18,11 @@ export default () => {
 
   return (
     <TodoProvider>
-      <TodoListPresenter inputChangeFC={changeInput} inputValue={newTodo} />
+      <TodoListPresenter
+        onSubmit={submitInput}
+        onChange={changeInput}
+        inputValue={newTodo}
+      />
     </TodoProvider>
   );
 };
