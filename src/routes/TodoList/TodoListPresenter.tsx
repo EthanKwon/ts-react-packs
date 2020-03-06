@@ -2,6 +2,7 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../../theme";
 import { TodoPresProps } from "./TodoInterface";
+import TodoItem from "../../components/TodoItem";
 
 const Container = styled.div`
   width: 100%;
@@ -42,12 +43,19 @@ const TodoLists = styled.div`
   width: 60%;
   height: 50%;
   border: 10px solid ${props => props.theme.subColor};
+  display: flex;
+`;
+
+const TodoListBox = styled.ul`
+  width: 50%;
 `;
 
 const TodoListPresenter = ({
   onSubmit,
   onChange,
-  inputValue
+  onToggle,
+  inputValue,
+  todoList
 }: TodoPresProps) => {
   return (
     <ThemeProvider theme={theme}>
@@ -61,7 +69,26 @@ const TodoListPresenter = ({
             onChange={onChange}
           />
         </InputForm>
-        <TodoLists />
+        <TodoLists>
+          <TodoListBox>
+            {todoList.todos.map(todoItem => {
+              if (!todoItem.isComplete) {
+                return (
+                  <TodoItem todoItem={todoItem} onToggle={onToggle}></TodoItem>
+                );
+              }
+            })}
+          </TodoListBox>
+          <TodoListBox>
+            {todoList.todos.map(todoItem => {
+              if (todoItem.isComplete) {
+                return (
+                  <TodoItem todoItem={todoItem} onToggle={onToggle}></TodoItem>
+                );
+              }
+            })}
+          </TodoListBox>
+        </TodoLists>
       </Container>
     </ThemeProvider>
   );

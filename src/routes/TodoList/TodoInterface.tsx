@@ -15,6 +15,25 @@ export interface TodoProvProps {
 
 export interface TodoPresProps {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onToggle: (id: string) => void;
   inputValue: string;
+  todoList: TodoListProps;
+}
+
+//TodoList Interface
+
+export interface TodoListProps {
+  todos: TodoItemProps[];
+}
+
+export interface TodoItemProps {
+  id: string;
+  text: string;
+  isComplete: boolean;
+}
+
+export interface TodoItemComponentProps {
+  todoItem: TodoItemProps;
+  onToggle: (id: string) => void;
 }

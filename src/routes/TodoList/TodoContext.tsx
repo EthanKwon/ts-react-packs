@@ -1,11 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 import { ContextProps, TodoProvProps } from "./TodoInterface";
 
-const initialState = {
-  toDos: [],
-  compoleted: []
-};
-
 const TodoContext = createContext({} as ContextProps);
 
 const TodoProvider = ({ children }: TodoProvProps) => {

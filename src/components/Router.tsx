@@ -6,14 +6,14 @@ import {
   Redirect
 } from "react-router-dom";
 import Home from "../routes/Home";
-import TodoListPresenter from "../routes/TodoList/TodoListPresenter";
+import TodoList from "../routes/TodoList";
 
 export default () => (
   <Router>
     <>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/todolist" exact component={TodoListPresenter} />
+        <Route path="/todolist" exact component={TodoList} />
         <Redirect from="*" to="/" />
       </Switch>
     </>
