@@ -47,13 +47,17 @@ const TodoLists = styled.div`
 `;
 
 const TodoListBox = styled.ul`
-  width: 50%;
+  width: 100%;
+  margin: 5%;
+  display: flex;
+  flex-flow: row wrap;
 `;
 
 const TodoListPresenter = ({
   onSubmit,
   onChange,
   onToggle,
+  onDelete,
   inputValue,
   todoList
 }: TodoPresProps) => {
@@ -71,22 +75,13 @@ const TodoListPresenter = ({
         </InputForm>
         <TodoLists>
           <TodoListBox>
-            {todoList.todos.map(todoItem => {
-              if (!todoItem.isComplete) {
-                return (
-                  <TodoItem todoItem={todoItem} onToggle={onToggle}></TodoItem>
-                );
-              }
-            })}
-          </TodoListBox>
-          <TodoListBox>
-            {todoList.todos.map(todoItem => {
-              if (todoItem.isComplete) {
-                return (
-                  <TodoItem todoItem={todoItem} onToggle={onToggle}></TodoItem>
-                );
-              }
-            })}
+            {todoList.todos.map(todoItem => (
+              <TodoItem
+                todoItem={todoItem}
+                onToggle={onToggle}
+                onDelete={onDelete}
+              ></TodoItem>
+            ))}
           </TodoListBox>
         </TodoLists>
       </Container>

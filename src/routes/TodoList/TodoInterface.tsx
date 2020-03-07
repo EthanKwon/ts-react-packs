@@ -17,6 +17,7 @@ export interface TodoPresProps {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
   inputValue: string;
   todoList: TodoListProps;
 }
@@ -36,4 +37,5 @@ export interface TodoItemProps {
 export interface TodoItemComponentProps {
   todoItem: TodoItemProps;
   onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
 }

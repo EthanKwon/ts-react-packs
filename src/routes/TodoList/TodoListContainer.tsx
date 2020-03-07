@@ -9,6 +9,7 @@ export default () => {
   });
   const [newTodo, setNewTodo] = useState(""); //새로운 리스트 추가
 
+  // Insert 함수
   const submitInput = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setTodoList({
@@ -25,10 +26,10 @@ export default () => {
     const {
       target: { value }
     } = e;
-    console.log(value);
     setNewTodo(value);
   }, []);
 
+  // Toggle 함수
   const toggleComplete = useCallback(
     (id: string) => {
       setTodoList({
@@ -40,11 +41,23 @@ export default () => {
     [todoList]
   );
 
+  // Delete 함수
+
+  const deleteTodo = useCallback(
+    (id: string) => {
+      setTodoList({
+        todos: todoList.todos.filter(todo => todo.id !== id)
+      });
+    },
+    [todoList]
+  );
+
   return (
     <TodoListPresenter
       onSubmit={submitInput}
       onChange={changeInput}
       onToggle={toggleComplete}
+      onDelete={deleteTodo}
       inputValue={newTodo}
       todoList={todoList}
     />
